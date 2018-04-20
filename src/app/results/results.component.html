@@ -1,3 +1,15 @@
-<p>
-  results works!
-</p>
+<ul class="list-group">
+  <li class="list-group-item" (click)="onSelected(result)" *ngFor="let result of results" >
+      <div class="pull-left">
+          <h4 class="list-group-item-heading">
+              {{result.dba}} 
+          </h4>
+          <p class="list-group-item-text">{{result.building}} {{result.street}}</p>
+        </div>
+        <span class="pull-right">
+          
+        </span> 
+
+    </li>
+  </ul>
+

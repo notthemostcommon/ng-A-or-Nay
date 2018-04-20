@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-location-overview',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./location-overview.component.css']
 })
 export class LocationOverviewComponent implements OnInit {
+  @Input() currentChoice: any; 
 
   constructor() { }
 
   ngOnInit() {
+    
   }
+
 
 }

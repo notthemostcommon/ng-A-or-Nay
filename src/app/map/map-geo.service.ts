@@ -3,15 +3,16 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'; 
+import { Subject } from 'rxjs/Subject';
 
 
 @Injectable()
-export class SearchService {
+export class MapGeoService {
 
   sharingData = {name: " "}; 
 
 
-  private dataStringSource = new BehaviorSubject<string>('0'); 
+  private dataStringSource = new Subject<string>(); 
 
   dataString$ = this.dataStringSource.asObservable(); 
 
@@ -19,10 +20,10 @@ export class SearchService {
     private http: Http
   ) { }
  
-  createAPIObservable(results){
-    console.log("service results passed in", results);
+  geoAPIObservable(results){
+    console.log("service results passed in", `${results.building} ${results.street}, New York, NY`);
     
-    return this.http.get('https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$q=' + results)
+    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+`${results.building} ${results.street}, New York, NY`+"&key=AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw")
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError); 

@@ -1,3 +1,43 @@
-<p>
-  location-overview works!
-</p>
+<!--Grid row-->
+<div class="row">
+
+    <!--Grid column-->
+    <div class="col-md-12 mb-r">
+
+        <!--Card-->
+        <div class="card card-cascade ">
+
+            <!--Card image-->
+            <div class="view gradient-card-header blue-gradient">
+                <div id="map-container-5" class="z-depth-1" style="height: 300px">
+
+                <app-map></app-map>
+              </div>
+            </div>
+            <!--/Card image-->
+
+            <!--Card content-->
+            <div class="card-body text-center">
+                <h5 class="card-title">{{currentChoice.dba}}</h5>
+                <p class="card-text">1({{currentChoice.phone | slice:0:3}}) {{currentChoice.phone | slice:3:6}}-{{currentChoice.phone | slice:6:10}}</p>
+                <p class="card-text">{{currentChoice.building}} {{currentChoice.street}}, {{currentChoice.boro}}</p>
+                <p class="card-text">Current Grade: {{currentChoice.grade}}</p>
+
+                <a [routerLink]="['/location',currentChoice.camis]" class="btn btn-primary">See More</a>
+
+                <!--Google map-->
+
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+    
+
+</div>
+<!--Grid row-->
+

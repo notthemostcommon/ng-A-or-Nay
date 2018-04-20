@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -12,7 +14,14 @@ import { LocationInfoComponent } from './location/location-info/location-info.co
 import { LocationOverviewComponent } from './location-overview/location-overview.component';
 import { SearchComponent } from './search/search.component';
 import { RoutingModule } from './routing.module';
-
+import { SearchService } from './search/search.service';
+import { MapComponent } from './map/map.component';
+import { ViolationsComponent } from './violations/violations.component';
+import { AgmCoreModule } from '@agm/core';
+import { ResultsContainerComponent } from './results-container/results-container.component'; 
+import { MapGeoService } from './map/map-geo.service';
+import { PhonePipe } from './phone.pipe';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,15 +31,27 @@ import { RoutingModule } from './routing.module';
     LocationComponent,
     LocationInfoComponent,
     LocationOverviewComponent,
-    SearchComponent
+    SearchComponent,
+    MapComponent,
+    ViolationsComponent,
+    ResultsContainerComponent,
+    PhonePipe,
+    NotFoundComponent
+
+    
   ],
   imports: [
     BrowserModule, 
     RoutingModule, 
     FormsModule, 
-    HttpModule, 
+    HttpModule,
+    HttpClientModule, 
+    NgbModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw'
+    }) 
   ],
-  providers: [],
+  providers: [SearchService, MapGeoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

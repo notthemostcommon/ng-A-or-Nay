@@ -23,7 +23,12 @@
                 <p class="card-text">{{currentChoice.building}} {{currentChoice.street}}, {{currentChoice.boro}}</p>
                 <p class="card-text">Current Grade: {{currentChoice.grade}}</p>
 
-                <a [routerLink]="['/location',currentChoice.camis]" class="btn btn-primary">See More</a>
+                <a 
+                  [routerLink]="['/location',currentChoice.camis]" 
+                  (click)="getLocationInfo(currentChoice.camis)"
+                  class="btn btn-primary">
+                  See More
+                </a>
 
                 <!--Google map-->
 

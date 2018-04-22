@@ -16,14 +16,15 @@ const routes: Routes = [
     path: 'results', 
     component: ResultsContainerComponent
   }, 
+  
+  {
+    path: 'location/:id', 
+    component: LocationComponent
+  }, 
   {
     path: '**', 
     component: NotFoundComponent
   }, 
-  {
-    path: 'location/:id', 
-    component: LocationComponent
-  }
 ];
 
 

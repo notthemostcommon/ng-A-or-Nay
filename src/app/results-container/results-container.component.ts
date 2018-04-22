@@ -19,7 +19,6 @@ export class ResultsContainerComponent implements OnInit {
   ngOnInit() {
     this.mapSubject
     .subscribe( results => {
-      console.log("mapSubject", results);
       this.mapService.saveData(results)
       
     })

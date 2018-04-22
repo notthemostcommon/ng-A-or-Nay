@@ -2,16 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject'; 
 import { Subject } from 'rxjs/Subject';
 
-
 @Injectable()
-export class MapGeoService {
-
-  sharingData = {name: " "}; 
-
-
+export class LocationServiceService {
+  sharingData: string; 
   private dataStringSource = new Subject<string>(); 
 
   dataString$ = this.dataStringSource.asObservable(); 
@@ -20,27 +15,26 @@ export class MapGeoService {
     private http: Http
   ) { }
  
-  geoAPIObservable(results){
-    console.log("mapservice results passed in", `${results.building} ${results.street}, New York, NY`);
+  getLocationData(results){
+    console.log("location service results passed in", results);
     
-    return this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address="+`${results.building} ${results.street}, New York, NY`+"&key=AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw")
+    return this.http.get('https://data.cityofnewyork.us/resource/9w7m-hzhe.json?$q=' + results)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError); 
   }
 
   public saveData(value) {
-    console.log("save data ", value + this.sharingData.name);
-    this.sharingData.name = value; 
-    this.dataStringSource.next(this.sharingData.name); 
+    console.log("save data", value);
     
+    this.sharingData = value; 
+    this.dataStringSource.next(this.sharingData)
   }
+
+  
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
-
-  
 }

@@ -34,20 +34,16 @@ export class ResultsComponent implements OnInit {
 
   onSelected(result: any){
     this.locationSelected.emit(result); 
-    console.log("click", result.dba );
   }
 
   getSearchData(query){
     this.searchService
     .createAPIObservable(query)
     .then(data => {
-      console.log('returned data', data);
       let unique = _.uniq( data, false, (location => {
         return location.camis
             }))
-        
             this.results = unique; 
-            console.log("this is unique", this.results);
           })
         }
       }

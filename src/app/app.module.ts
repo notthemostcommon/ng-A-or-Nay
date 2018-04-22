@@ -22,6 +22,7 @@ import { ResultsContainerComponent } from './results-container/results-container
 import { MapGeoService } from './map/map-geo.service';
 import { PhonePipe } from './phone.pipe';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LocationServiceService } from './location/location-service.service';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
       apiKey: 'AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw'
     }) 
   ],
-  providers: [SearchService, MapGeoService],
+  providers: [SearchService, MapGeoService, LocationServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

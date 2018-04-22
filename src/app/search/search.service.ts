@@ -9,8 +9,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class SearchService {
 
   sharingData = {name: " "}; 
-
-
   private dataStringSource = new BehaviorSubject<string>('0'); 
 
   dataString$ = this.dataStringSource.asObservable(); 
@@ -32,14 +30,10 @@ export class SearchService {
     console.log("save data ", value + this.sharingData.name);
     this.sharingData.name = value; 
     this.dataStringSource.next(this.sharingData.name); 
-    
   }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-
-
-  
 }

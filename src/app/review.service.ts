@@ -34,38 +34,39 @@ export class ReviewService {
                .map(success => success)
                .catch(this.handleError);
     }
-    //Fetch article by id
+    //Fetch review by id
     getReviewById(reviewId: string): Observable<Review> {
-	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-	// let options = new RequestOptions({ headers: cpHeaders });
-	console.log(this.reviewUrl +"/"+ reviewId);
+	    console.log(this.reviewUrl +"/"+ reviewId);
 	    return this.http.get(this.reviewUrl +"/"+ reviewId)
         .map(res=> <Review[]> res)
         .catch(this.handleError);
     }	
-    //Update article
+
+    //Fetch review by locationId
+    getReviewByLocationId(locationId: string): Observable<Review> {
+	    return this.http.get(this.reviewUrl +"/location/"+ locationId)
+        .map(res=> {
+          console.log("service review res", res);
+          
+          return <Review[]> res})
+        .catch(this.handleError);
+    }	
+    //Update review
     updateReview(review: Review):Observable<string> {
-	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-        // let options = new RequestOptions({ headers: cpHeaders });
         return this.http.put(this.reviewUrl +"/"+ review.id, review)
                .map(success => success)
                .catch(this.handleError);
     }
-    //Delete article	
+    //Delete review	
     deleteArticleById(reviewId: string): Observable<string> {
-	let cpHeaders = new Headers({ 'Content-Type': 'application/json' });
-	// let options = new RequestOptions({ headers: cpHeaders });
-	return this.http.delete(this.reviewUrl +"/"+ reviewId)
+	    return this.http.delete(this.reviewUrl +"/"+ reviewId)
 	       .map(success => success)
                .catch(this.handleError);
     }	
-    // private extractData(res: Response) { 
-	  //     let body = res.json();
-    //     return body;
-    // }
+   
     
     private handleError (error: Response | any) {
-	console.error(error.message || error);
-	return Observable.throw(error.status);
-    }
+      console.error(error.message || error);
+      return Observable.throw(error.status);
+        }
 } 

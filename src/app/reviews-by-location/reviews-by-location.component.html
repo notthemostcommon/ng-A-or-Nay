@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h3>Reviews</h3>
+      <ul class="list-group">
+        <div *ngFor="let review of reviews">
+            <app-star-rating
+            [score]="review.rating"
+            [forDisplay]="true"></app-star-rating>
+          <li class="list-group-item" >{{review.review}}</li>
+          
+        <hr>
+      </div>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { MapGeoService } from '../map/map-geo.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 
+
+
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -23,6 +25,7 @@ export class LocationComponent implements OnInit {
   readonly = true;
   score : number = 0;
   displayRatingScore = 4;
+  totalReviews: number = 1; 
 
   private id; 
   private sub; 

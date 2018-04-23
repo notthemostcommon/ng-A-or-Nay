@@ -25,7 +25,16 @@
                 <app-star-rating
                   [score]="displayRatingScore"
                   [forDisplay]="true"></app-star-rating>
-                <div>Average User Rating: {{displayRatingScore}}</div>
+                  
+                <div [ngSwitch]="totalReviews" >
+                    <div *ngSwitchCase="0">
+                        This Location hasn't been reviewed yet. Be the first!
+                      </div>
+                  <div *ngSwitchCase="1">
+                      Average User Rating: {{displayRatingScore}} from {{totalReviews}} review
+                    </div>
+                    <div *ngSwitchDefault >Average User Rating: {{displayRatingScore}} from {{totalReviews}} reviews</div>
+                  </div> 
                 
                <hr>
               </div>
@@ -37,6 +46,10 @@
           </div>
     </div>
 </mat-sidenav-container>
+<div *ngIf="locationInfo" >
+    <app-reviews-by-location [locationInfo]="locationInfo" ></app-reviews-by-location>
+
+</div>
 
 
 

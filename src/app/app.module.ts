@@ -41,7 +41,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReviewService } from './review.service';
-
+import { ReviewsByLocationComponent } from './reviews-by-location/reviews-by-location.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,8 @@ import { ReviewService } from './review.service';
     ReviewAddComponent,
     StarRatingComponent,
     NavbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    ReviewsByLocationComponent
 
     
   ],

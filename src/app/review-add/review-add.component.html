@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div [hidden]="submitted">
+    <h1 *ngIf="locationInfo" > Review {{locationInfo[0].dba}} </h1>
+    <form 
+      #form="ngForm"  
+      (ngSubmit)="onSubmit(form.value)"
+      #reviewForm="ngForm">
+        <div class="form-group">
+          <div class="col-md-8">
+            <label for="review">Tell Us About Your Experience</label>
+            <textarea 
+              required
+              class="form-control" 
+              name="review" 
+              id="review" 
+              rows="5"
+              [(ngModel)]="review" name="review"></textarea>
+          </div>
+          <input type="hidden" name="camis" [(ngModel)]="camis" value="locationInfo[0].camis">
+          <input type="hidden" name="dba" [(ngModel)]="dba" value="locationInfo[0].dba">
+          <input type="hidden" name="bldg" [(ngModel)]="bldg" value="locationInfo[0].building">
+          <input type="hidden" name="street" [(ngModel)]="street" value="locationInfo[0].street">
+          <input type="hidden" name="boro" [(ngModel)]="boro" value="locationInfo[0].boro">
+          <input type="hidden" name="zip" [(ngModel)]="zip" value="locationInfo[0].zipcode">
+          <input type="hidden" name="grade" [(ngModel)]="grade" value="locationInfo[0].grade">
+          <input type="hidden" name="category" [(ngModel)]="category" value="locationInfo[0].cuisine_description">
+          <input type="hidden" name="rating" [(ngModel)]="score" value="score">
+          <input type="hidden" name="user_id" [(ngModel)]="user_id" value="user_id">
+
+          </div> 
+          <div class="col-md-8">
+          <label for="rating">Rate Your Experience</label>
+          <app-star-rating 
+            [(ngModel)]="rating"
+            name="rating"
+            ngDefaultControl
+            required
+            [maxScore]="5" 
+            [forDisplay]="false" 
+            (rateChanged)="onRateChange($event)"></app-star-rating>
+            <div>Rating: {{score}}</div>
+          </div>
+          <div class="col-auto my-1">
+              <button 
+              type="submit" 
+              class="btn btn-success" 
+              >Submit Review</button>
+              <button 
+              type="button" 
+              class="btn btn-light" 
+              (click)="reviewForm.reset()"
+              >Clear Form</button>
+              <button 
+              type="button" 
+              class="btn btn-danger" 
+              (click)="cancel()"
+              >Cancel</button>
+    
+          </div>
+    </form>
+    
+  </div>
+</div>
+
+
+            
+    
+  

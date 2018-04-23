@@ -6,6 +6,7 @@ import { ResultsComponent } from './results/results.component';
 import { ResultsContainerComponent } from './results-container/results-container.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LocationComponent } from './location/location.component';
+import { ReviewAddComponent } from './review-add/review-add.component';
 
 const routes: Routes = [
   {
@@ -13,14 +14,21 @@ const routes: Routes = [
       component: HomeComponent
   }, 
   {
+
     path: 'results', 
     component: ResultsContainerComponent
   }, 
   
   {
     path: 'location/:id', 
-    component: LocationComponent
+    component: LocationComponent,
   }, 
+  {
+    path: 'location/:id/review', 
+    component: ReviewAddComponent, 
+
+  },
+  
   {
     path: '**', 
     component: NotFoundComponent

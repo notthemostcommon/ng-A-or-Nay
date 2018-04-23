@@ -1,25 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <address *ngIf="locationInfo">
-        <strong>{{locationInfo[0].dba}}</strong><br>
-        {{locationInfo[0].building}} {{locationInfo[0].street}}<br>
-        {{locationInfo[0].boro}}, {{locationInfo[0].zipcode}}<br>
-        <abbr title="Phone"></abbr>1({{locationInfo[0].phone | slice:0:3}}) {{locationInfo[0].phone | slice:3:6}}-{{locationInfo[0].phone | slice:6:10}}
-      </address>
-      <ngb-rating 
-        [(rate)]="selected" 
-        [readonly]="data-readonly"></ngb-rating>
+<app-navbar></app-navbar>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav mode="side" class="app-sidenav">
+    <mat-nav-list>
+        <a mat-list-item [routerLink]="['review']">Write Review</a>
+        <a mat-list-item href="#">Edit Review</a>
+        <a mat-list-item href="#">See All Violations</a>
+    </mat-nav-list>
+        </mat-sidenav>
+        <mat-toolbar color="primary">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon class="md-24" >menu</mat-icon>
+            </button>
+        </mat-toolbar>
+    <div class="app-content">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <address *ngIf="locationInfo">
+                  <strong>{{locationInfo[0].dba}}</strong><br>
+                  {{locationInfo[0].building}} {{locationInfo[0].street}}<br>
+                  {{locationInfo[0].boro}}, {{locationInfo[0].zipcode}}<br>
+                  <abbr title="Phone"></abbr>1({{locationInfo[0].phone | slice:0:3}}) {{locationInfo[0].phone | slice:3:6}}-{{locationInfo[0].phone | slice:6:10}}
+                </address>
+                <app-star-rating
+                  [score]="displayRatingScore"
+                  [forDisplay]="true"></app-star-rating>
+                <div>Average User Rating: {{displayRatingScore}}</div>
+                
+               <hr>
+              </div>
+              <div class="col-md-8">
+                  <app-map></app-map>
+              </div>
+            </div>
+            
+          </div>
+    </div>
+</mat-sidenav-container>
 
-        <hr>
-        
-       
-    </div>
-    <div class="col-md-8">
-        <app-map></app-map>
-    </div>
-  </div>
-  
-</div>
 
 

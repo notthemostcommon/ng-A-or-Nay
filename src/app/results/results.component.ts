@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SearchService } from '../search/search.service';
-import { _ } from 'underscore'; 
+import * as _ from 'underscore'; 
 
 @Component({
   selector: 'app-results',

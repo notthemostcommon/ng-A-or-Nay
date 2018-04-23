@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +23,25 @@ import { MapGeoService } from './map/map-geo.service';
 import { PhonePipe } from './phone.pipe';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LocationServiceService } from './location/location-service.service';
+import { ReviewAddComponent } from './review-add/review-add.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { 
+        MatMenuModule, 
+        MatButtonModule, 
+        MatIconModule, 
+        MatCardModule, 
+        MatSidenavModule, 
+        MatNavList, 
+        MatToolbar, 
+        } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReviewService } from './review.service';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +56,11 @@ import { LocationServiceService } from './location/location-service.service';
     ViolationsComponent,
     ResultsContainerComponent,
     PhonePipe,
-    NotFoundComponent
+    NotFoundComponent,
+    ReviewAddComponent,
+    StarRatingComponent,
+    NavbarComponent,
+    SidenavComponent
 
     
   ],
@@ -49,10 +72,22 @@ import { LocationServiceService } from './location/location-service.service';
     HttpClientModule, 
     NgbModule.forRoot(),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw'
-    }) 
+      apiKey: 'AIzaSyDJtlO1r8TrvZFcOXgnjb35DSQ0cS_Ljkw', 
+    }),
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule, 
+    MatToolbarModule,
+    MatListModule, 
+    MatFormFieldModule, 
+    ReactiveFormsModule, 
+    
+   
   ],
-  providers: [SearchService, MapGeoService, LocationServiceService],
+  providers: [SearchService, MapGeoService, LocationServiceService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

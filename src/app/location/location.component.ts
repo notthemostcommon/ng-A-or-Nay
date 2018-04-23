@@ -19,8 +19,10 @@ export class LocationComponent implements OnInit {
   mapSubject = new Subject(); 
   currentRate: number = 4; 
   selected = 4;
-  hovered = 0;
+  // hovered = 0;
   readonly = true;
+  score : number = 0;
+  displayRatingScore = 4;
 
   private id; 
   private sub; 

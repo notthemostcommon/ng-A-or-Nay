@@ -10,10 +10,10 @@ export class MapComponent implements OnInit {
   geoData: any;
   query: any;
   title: string = ''; 
-  // lat: number = 40.730610;
-  // lng: number = -73.935242;
-  lat: number;
-  lng: number;
+  lat: number = 40.730610;
+  lng: number = -73.935242;
+  // lat: number;
+  // lng: number;
   zoom: number = 15; 
 
   constructor(

@@ -17,7 +17,7 @@
             <!--/Card image-->
 
             <!--Card content-->
-            <div class="card-body text-center">
+            <div class="card-body text-center" *ngIf="currentChoice">
                 <h5 class="card-title">{{currentChoice.dba}}</h5>
                 <p class="card-text">1({{currentChoice.phone | slice:0:3}}) {{currentChoice.phone | slice:3:6}}-{{currentChoice.phone | slice:6:10}}</p>
                 <p class="card-text">{{currentChoice.building}} {{currentChoice.street}}, {{currentChoice.boro}}</p>

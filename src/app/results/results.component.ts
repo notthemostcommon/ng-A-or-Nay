@@ -8,7 +8,7 @@ import * as _ from 'underscore';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-  results: any;
+  results: Array<any>;
   query: any; 
   selected: any; 
   @Output() locationSelected = new EventEmitter<string>(); 

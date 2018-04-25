@@ -40,10 +40,12 @@ export class ResultsComponent implements OnInit {
     this.searchService
     .createAPIObservable(query)
     .then(data => {
-      let unique = _.uniq( data, false, (location => {
+      this.results = _.uniq( data, false, (location => {
+        console.log("uniq data", data);
+        
         return location.camis
             }))
-            this.results = unique; 
+            
           })
         }
       }
